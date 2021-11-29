@@ -3,7 +3,6 @@
 namespace Alura\Banco\Modelo;
 
 class CPF
-
 {
     private $numero;
 

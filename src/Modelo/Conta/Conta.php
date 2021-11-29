@@ -5,7 +5,7 @@ namespace Alura\Banco\Modelo\Conta;
 abstract class Conta
 {
     private $titular;
-    private $saldo;
+    protected $saldo;
     private static $numeroDeContas = 0;
 
     public function __construct(Titular $titular)
@@ -32,7 +32,6 @@ abstract class Conta
 
         $this->saldo -= $valorSaque;
     }
-
 
     public function deposita(float $valorADepositar): void
     {
@@ -64,6 +63,5 @@ abstract class Conta
         return self::$numeroDeContas;
     }
 
-    abstract protected function percentualTarifa(): float ;
-
+    abstract protected function percentualTarifa(): float;
 }

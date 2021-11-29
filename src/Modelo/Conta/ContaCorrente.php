@@ -2,7 +2,7 @@
 
 namespace Alura\Banco\Modelo\Conta;
 
-class ContaCorrete extends Conta
+class ContaCorrente extends Conta
 {
     protected function percentualTarifa(): float
     {
@@ -19,5 +19,4 @@ class ContaCorrete extends Conta
         $this->sacar($valorATransferir);
         $contaDestino->depositar($valorATransferir);
     }
-
 }

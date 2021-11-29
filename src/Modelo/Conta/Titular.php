@@ -1,13 +1,13 @@
 <?php
 
-namespace Alura\Banco\Modelo\Conta; //A separação de namespaces é utilizando o "\"
+namespace Alura\Banco\Modelo\Conta;
 
+use Alura\Banco\Modelo\Autenticavel;
 use Alura\Banco\Modelo\Pessoa;
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Endereco;
 
-//Titular é uma pessoa
-class Titular extends Pessoa
+class Titular extends Pessoa implements Autenticavel
 {
     private $endereco;
 
@@ -20,5 +20,10 @@ class Titular extends Pessoa
     public function recuperaEndereco(): Endereco
     {
         return $this->endereco;
+    }
+
+    public function podeAutenticar(string $senha): bool
+    {
+        return $senha === 'abcd';
     }
 }

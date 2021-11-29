@@ -1,21 +1,22 @@
-<?php  // Tudo o que pessoa tem, funcionário e titular também tem. 
-        //Isso foi feito para não repetir CPF e nome no código
+<?php
 
 namespace Alura\Banco\Modelo;
 
-class Pessoa 
+abstract class Pessoa
 {
-    protected $nome; //quando qualquer método for "protected" dentro das classes e das classes filhas nós conseguimos acesso
+    use AcessoPropriedades;
+
+    protected $nome;
     private $cpf;
 
     public function __construct(string $nome, CPF $cpf)
     {
-        $this->validaNomeTitular($nome);
+        $this->validaNome($nome);
         $this->nome = $nome;
         $this->cpf = $cpf;
     }
 
-    public function recuperaNome(): string 
+    public function recuperaNome(): string
     {
         return $this->nome;
     }
@@ -25,11 +26,12 @@ class Pessoa
         return $this->cpf->recuperaNumero();
     }
 
-    protected function validaNomeTitular(string $nomeTitular)
+    final protected function validaNome(string $nomeTitular)
     {
         if (strlen($nomeTitular) < 5) {
             echo "Nome precisa ter pelo menos 5 caracteres";
             exit();
         }
     }
+
 }
